@@ -255,7 +255,7 @@ Please configure the monitor's message so that it will:
 - Send you an email whenever the monitor triggers.
 
 **Answers:**
-The first screenshot shows the setup of the monitor.
+The first screenshot shows the setup of the monitor. In these examples I used a specific server name. This will show in figure 12 and 13, however, I did play around with understanding how to use variables to apply to multiple servers. Figure 14b shows and example of how I was able to change the message to include the variables for the hostname and the IP of the server.
 
 ![](http://i.imgur.com/B6QW1TB.png)
 *Figure 11 Metric Monitor set up of thresholds*
@@ -274,16 +274,17 @@ Include the metric value that caused the monitor to trigger and host ip when the
 **Answer:**
 I used the following text for my alert message:
 ```
-{{value}}   sent to @g.specht@gmstechllc.com
+{{value}} Host {{host.name}} with IP {{host.ip}} is alerting @g.specht@gmstechllc.com
 
-{{#is_warning}} My_metric is in a warning state for  Host {{Host.Name}} with {{Host.ip}} {{/is_warning}} 
-{{^is_warning}} My_metric is critical for Host {{Host.Name}} with {{Host.ip}} {{/is_warning}} 
+
 ```
-I played around with the different parameters to see what output changes I would get.
+I played around with the different parameters to see what output changes I would get. I showed the different scenarios in the screenshots. The big takaway is that I was able to see the power and flexibility of the montors and the notification features.
 
 ![](http://i.imgur.com/8UxTqay.png)
-*Figure 14 Email format from Alert Notification*
-When this monitor sends you an email notification, take a screenshot of the email that it sends you.
+*Figure 14a Email format from Alert Notification static server name*
+
+![](http://i.imgur.com/UVhOCuW.png)
+*Figure 14b Email format from Alert Notification variable hostname and IP*
 
 **Bonus Question:** Since this monitor is going to alert pretty often, you don't want to be alerted when you are out of the office. Set up two scheduled downtimes for this monitor:
 
